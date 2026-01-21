@@ -1,3 +1,4 @@
+// Created interface for function output 
 export interface PortfolioPerformanceResult{
     initialInvestment: number;
     currentValue: number;
@@ -5,22 +6,28 @@ export interface PortfolioPerformanceResult{
     percentageChange: number;
     performanceSummary: string;
 }
-
-export function calculatePortfolioPerformance(): any {
-    let initialInvestment = 10000;
-    let currentValue = 12000;
-
-    const profitOrLoss = initialInvestment / currentValue;
+// Changed from classic function to arrow function
+export const calculatePortfolioPerformance = (initialInvestment: number, currentValue: number): PortfolioPerformanceResult => {
+    
+    // Corrected math logic, profit or loss is calculated by subtracting the initial Investment from current value.
+    const profitOrLoss = currentValue - initialInvestment;
 
     const percentageChange = (profitOrLoss / initialInvestment) * 100;
-
-    let performanceSummary;
-    if (percentageChange > 20) {
-        performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
-    } else {
-        performanceSummary = `The portfolio has performed poorly.`;
-    }
-
+    
+    // Replaced if statement with ternary expression
+    const performanceSummary: string = 
+        percentageChange >= 30
+        ? `Excellent performance! Your investments are doing great.`:
+        percentageChange >= 10
+        ? `Solid gain. Keep monitoring your investments.`:
+        percentageChange <= 9
+        ? `Modest gain. Your portfolio is growing slowly.`:
+        percentageChange === 0
+        ? `No Change. Your portfolio is holding steady.`:
+        percentageChange >= -10
+        ? `Minor loss. Stay calm and review your options.`:
+          `Significant loss. Review your portfolio strategy.`;
+          
     return {
         initialInvestment,
         currentValue,
@@ -28,4 +35,4 @@ export function calculatePortfolioPerformance(): any {
         percentageChange,
         performanceSummary,
     };
-}
+};
