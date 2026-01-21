@@ -12,7 +12,8 @@ export const calculatePortfolioPerformance = (initialInvestment: number, current
     // Corrected math logic, profit or loss is calculated by subtracting the initial Investment from current value.
     const profitOrLoss = currentValue - initialInvestment;
 
-    const percentageChange = (profitOrLoss / initialInvestment) * 100;
+    // Added ternary statement to prevent deviding by zero if there was no initial investment.
+    const percentageChange = initialInvestment === 0 ? 0: (profitOrLoss / initialInvestment) * 100;
     
     // Replaced if statement with ternary expression
     const performanceSummary: string = 
@@ -20,14 +21,14 @@ export const calculatePortfolioPerformance = (initialInvestment: number, current
         ? `Excellent performance! Your investments are doing great.`:
         percentageChange >= 10
         ? `Solid gain. Keep monitoring your investments.`:
-        percentageChange <= 9
+        percentageChange > 0
         ? `Modest gain. Your portfolio is growing slowly.`:
         percentageChange === 0
         ? `No Change. Your portfolio is holding steady.`:
         percentageChange >= -10
         ? `Minor loss. Stay calm and review your options.`:
           `Significant loss. Review your portfolio strategy.`;
-          
+
     return {
         initialInvestment,
         currentValue,
