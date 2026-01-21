@@ -24,7 +24,7 @@ export const calculatePortfolioPerformance = (initialInvestment: number, current
         percentageChange > 0
         ? `Modest gain. Your portfolio is growing slowly.`:
         percentageChange === 0
-        ? `No Change. Your portfolio is holding steady.`:
+        ? `No change. Your portfolio is holding steady.`:
         percentageChange >= -10
         ? `Minor loss. Stay calm and review your options.`:
           `Significant loss. Review your portfolio strategy.`;
