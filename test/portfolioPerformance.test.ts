@@ -34,4 +34,20 @@ describe("calculatePortfolioPerformance", () => {
             "No change. Your portfolio is holding steady."
         );
     });
+
+        it("should return 'Minor loss' when the loss is between -10% and < 0%", () => {
+        // Arrange
+        const initialInvestment = 10000;
+        const currentValue = 9500; // -5%
+
+        // Act
+        const result = calculatePortfolioPerformance(initialInvestment, currentValue);
+
+        // Assert
+        expect(result.profitOrLoss).toBe(-500);
+        expect(result.percentageChange).toBe(-5);
+        expect(result.performanceSummary).toBe(
+            "Minor loss. Stay calm and review your options."
+        );
+    });
 });
