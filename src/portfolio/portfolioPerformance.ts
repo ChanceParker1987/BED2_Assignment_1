@@ -1,3 +1,11 @@
+export interface PortfolioPerformanceResult{
+    initialInvestment: number;
+    currentValue: number;
+    profitOrLoss: number;
+    percentageChange: number;
+    performanceSummary: string;
+}
+
 export function calculatePortfolioPerformance(): any {
     let initialInvestment = 10000;
     let currentValue = 12000;
