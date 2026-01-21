@@ -5,8 +5,8 @@ describe("POST /api/v1/portfolio/performance", () => {
   it("should return 200 status code", async () => {
     // Act
     const response = await request(app)
-      .post("/api/v1/portfolio/performance")
-      .send({
+      .get("/api/v1/portfolio/performance")
+      .query({
         initialInvestment: 10000,
         currentValue: 8000,
       });
@@ -18,8 +18,8 @@ describe("POST /api/v1/portfolio/performance", () => {
   it("should return calculated portfolio performance data", async () => {
     // Act
     const response = await request(app)
-      .post("/api/v1/portfolio/performance")
-      .send({
+      .get("/api/v1/portfolio/performance")
+      .query({
         initialInvestment: 10000,
         currentValue: 8000,
       });
