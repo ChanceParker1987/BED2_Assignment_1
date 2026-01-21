@@ -50,4 +50,20 @@ describe("calculatePortfolioPerformance", () => {
             "Minor loss. Stay calm and review your options."
         );
     });
+
+        it("should return 'Significant loss' when the loss is less than -10%", () => {
+        // Arrange
+        const initialInvestment = 10000;
+        const currentValue = 8000; // -20%
+
+        // Act
+        const result = calculatePortfolioPerformance(initialInvestment, currentValue);
+
+        // Assert
+        expect(result.profitOrLoss).toBe(-2000);
+        expect(result.percentageChange).toBe(-20);
+        expect(result.performanceSummary).toBe(
+            "Significant loss. Review your portfolio strategy."
+        );
+    });
 });
