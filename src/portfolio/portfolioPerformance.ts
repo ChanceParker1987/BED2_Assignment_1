@@ -37,3 +37,4 @@ export const calculatePortfolioPerformance = (initialInvestment: number, current
         performanceSummary,
     };
 };
+
